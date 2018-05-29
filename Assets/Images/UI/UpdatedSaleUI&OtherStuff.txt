@@ -1,0 +1,17 @@
+SalePersistent & RareSalePersistent - 
+	The Tags have only had their animations changed, so no changes needed there.
+	The SaleBase object doesn't have an animation now, in it's place the SaleBasePulse needs to be activated with the 'Activate' trigger. Same goes for the RareSalePersistent SaleBase.
+
+LeaderIndicatorUpdated - 
+	This has changed a fair bit. All of this needs to happen when the leader changes.
+	Firstly the animator on the LeaderBackgroundDrop needs to be activated with the 'Activate' trigger. Then colour on LeaderPanel-LeaderBackgroundDrop needs to be changed
+	to the colour of the new leader. Then, the image on LeaderPlayerHeadDrop under LeaderBackgroundDrop needs to be changed to the colour of the new leader.
+	Then, the image for the LeaderTextDrop object needs to be changed to the colour of the new leader.
+	After the drop animation is finished, the LeaderBackground object needs the same treatment - changing the colour of the LeaderBackground, and the images for LeaderPlayerHead and LeaderText, but only after the drop animation is done.
+	Finally, the animator on the 'TakesTheLead' object inside the LeaderBottomBar needs to be activated with 'Activate'.
+
+PlayerSelectTimer - 
+	I've made a timer for the player select that has the same pulsing as the one in game. Dragging the PlayerSelectTimer prefab under Prefabs/UI into the playerSelectCanvas should work.
+	When the time gets low on the player select, all that needs to be done is the StopWatchPulse, StopWatchImage and StopWatchText's animators need to be triggered with 'Activate', and they'll do their individual thing, since
+	the animations loop.
+	

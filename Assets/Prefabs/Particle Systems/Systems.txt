@@ -1,0 +1,91 @@
+Particle Systems in use.
+
+// Item
+CheckoutCashParticles - Triggers when an item is scored, at the point an item collides with the checkout.
+Impact_Dust - Triggers when a thrown item collides with something that isn't a player, security guard or breakable environment.
+Item_Trail - A trail renderer that is active while an item is being thrown. Is not a particle system. The trails colour will need to be changed based on the player that threw the item.
+Decal - Will need to add to items (use Groundslam effect).
+
+//SaleParticles
+Item_Glow - Loops while an on sale item is idle. 
+Item_Carry - Loops while an on sale item is not idle.
+
+
+// Player
+Dust_Ring - Gets triggered by an animation event called "AnimEvent_DustRing", during the stun animation.
+Player_Walk - Gets triggered by an animation event called "AnimEvent_PlayerWalk", during the walk animation.
+Player_Motion - Triggers when a player starts to dash. Has a trail renderer, which will need to be enabled while the playing is dashing. The trail will also need to be recoloured.
+Impact_Punch - Triggers when a player gets punched. The Impact_Punch GameObject will need to be rotated along the Y axis, so it matches up with the punching player.
+Impact_Throw - Triggers when a thrown item hits a player. Needs to be positioned roughly around the point of collision.
+Impact_Dash - Triggers when a dashing character hits another. Needs to be positioned roughly around the point of collision.
+Impact_GroundSlam - Triggered by an animation event called "AnimEvent_GroundSlam", as part of the Ground Slam animation. Move from Hitbox.
+
+GroundSlam_Charge - Plays once while a player is charging a ground slam. InwardLines system needs to have the colour of the colour over time module changed. OuterPulse needs to have its start colour changed.
+GroundSlam_Holds - Loops until a player releases the ground slam. Circles system will need to have the colour of the colour over time module changed.
+
+FistTrail_L + FistTrail_R - Trail renderers that are children of the hand joints on the player prefab. Enabled and Disabled by animation events called "AnimEvent_TrailStart" and "AnimEvent_TrailStop", as part of the punch and ground slam animations.
+
+
+//Security AI
+Angry - Loops while the security guard is chasing a player.
+
+
+// Scene
+Rare_Score_Blue - Triggers in the checkout area when a blue player scores with a rare item.
+Rare_Score_Green - For the green player.
+Rare_Score_Pink - etc.
+Rare_Score_Red
+Rare_Score_Yellow
+
+Impact_Terrain - Triggers when a destructable environment piece changes stages.
+
+*Confetti - Trigger when the winning players are revealed on the end round screen. Not in place in scene at the moment.
+
+
+
+Colours to change to
+
+Player_Motion Trail, Item_Trail, FistTrail_L and FistTrail_R
+Blue - (0, 130, 255)
+Green - (100, 255, 0)
+Pink - (255, 75, 200)
+Red - (255, 60, 60)
+Yellow - (255, 255, 40)
+
+GroundSlamCharge
+Blue 
+	InwardLines - [Gradient Variable].SetKeys( new GradientColorKey[] { new GradientColorKey(Color.White, 0.55f), new GradientColorKey(new Color(0.0f, 192f/255.0f, 1.0f), 1.0f), new GradientAlphaKey(1.0f, 0.9f), new GradientAlphaKey(0.0f, 1.0f)  } );
+	OuterPulse - (0, 192, 255)
+
+Green
+	InwardLines - [Gradient Variable].SetKeys( new GradientColorKey[] { new GradientColorKey(Color.White, 0.55f), new GradientColorKey(new Color(69f/255.0f, 1.0f, 132f/255.0f), 1.0f), new GradientAlphaKey(1.0f, 0.9f), new GradientAlphaKey(0.0f, 1.0f)  } );
+	OuterPulse - (69, 255, 132)
+
+Pink
+	InwardLines - [Gradient Variable].SetKeys( new GradientColorKey[] { new GradientColorKey(Color.White, 0.55f), new GradientColorKey(new Color(1.0f, 129f/255.0f, 174f/255.0f), 1.0f), new GradientAlphaKey(1.0f, 0.9f), new GradientAlphaKey(0.0f, 1.0f)  } );
+	OuterPulse - (255, 129, 174)
+
+Red
+	InwardLines - [Gradient Variable].SetKeys( new GradientColorKey[] { new GradientColorKey(Color.White, 0.55f), new GradientColorKey(new Color(1.0f, 72f/255.0f, 72f/255.0f), 1.0f), new GradientAlphaKey(1.0f, 0.9f), new GradientAlphaKey(0.0f, 1.0f)  } ); 
+	OuterPulse - (255, 72, 72)
+
+Yellow
+	InwardLines - [Gradient Variable].SetKeys( new GradientColorKey[] { new GradientColorKey(Color.White, 0.55f), new GradientColorKey(new Color(1.0f, 220f/255.0f, 72f/255.0f), 1.0f), new GradientAlphaKey(1.0f, 0.9f), new GradientAlphaKey(0.0f, 1.0f)  } );
+	OuterPulse - (255, 220, 72)
+
+
+GroundSlamHold
+Blue
+	Circles - [Gradient Variable].SetKeys( new GradientColorKey[] { new GradientColorKey(new Color(0.0f, 192f/255.0f, 1.0f), 1.0f), new Color(Color.White, 0.55f) new GradientAlphaKey(0.0f, 1.0f), new GradientAlphaKey(1.0f, 0.0f) } );
+
+Green
+	Circles - [Gradient Variable].SetKeys( new GradientColorKey[] { new GradientColorKey(new Color(69f/255.0f, 1.0f, 132f/255.0), 1.0f), new Color(Color.White, 0.55f) new GradientAlphaKey(0.0f, 1.0f), new GradientAlphaKey(1.0f, 0.0f) } );
+
+Pink
+	Circles - [Gradient Variable].SetKeys( new GradientColorKey[] { new GradientColorKey(new Color(1.0f, 129f/255.0f, 174f/255.0f), 1.0f), new Color(Color.White, 0.55f) new GradientAlphaKey(0.0f, 1.0f), new GradientAlphaKey(1.0f, 0.0f) } );
+
+Red
+	Circles - [Gradient Variable].SetKeys( new GradientColorKey[] { new GradientColorKey(new Color(1.0f, 72f/255.0f, 72f/255.0f), 1.0f), new Color(Color.White, 0.55f) new GradientAlphaKey(0.0f, 1.0f), new GradientAlphaKey(1.0f, 0.0f) } );
+
+Yellow
+	Circles - [Gradient Variable].SetKeys( new GradientColorKey[] { new GradientColorKey(new Color(1.0f, 220f/255.0f, 72f/255.0f), 1.0f), new Color(Color.White, 0.55f) new GradientAlphaKey(0.0f, 1.0f), new GradientAlphaKey(1.0f, 0.0f) } );

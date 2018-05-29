@@ -1,0 +1,10 @@
+Leader Indicator:
+
+Needs to play when the current leader of the game changes. All of the objects are parented under 'LeaderObject/LeaderPanel' in the HUD. When there's a new leader,
+the 'Slide' trigger needs to be activated on the animators on the 'LeaderBottomBar' & 'LeaderBackground' objects - it should be pretty much the same as
+the ScoreIndicators, except only the 'SlideIn' animation needs to be played.
+
+Depending on the player's colour, three things need to be changed. The Image Colour for the 'LeaderBackground' object needs to be changed to whatever
+the new leader's colour is. The Image for the 'LeaderText' object needs to be changed to the corresponding player's colour - the image files are
+under Assets/Images/UI/Leader Indicator , they're each called LeaderIndicator*Colour*Text.png. Lastly, the Image for the 'LeaderPlayerHead' object
+needs to be changed in the same way, the head files are under Assets/Images/Player Heads , all called PlayerHead*Colour*.png

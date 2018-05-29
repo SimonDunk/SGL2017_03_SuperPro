@@ -1,0 +1,20 @@
+New Week 7 Animation README
+
+	- Added "PlayerPrefab_New" + "PlayerAnimCtrl_New" - Where all the new player character animations are. 
+	- REM "PlayerPrefab_Guard" and "PlayerAnimCtrl_Guard" are the old versions. Kept in/renamed because security guard still uses these
+
+	- PlayerPrefab_New now has two boxing gloves models so please assign the color materials to these as well.
+	
+
+
+~~~~~~ Animations that are added ~~~~~~~
+
+- "Wave" - currently Set up as a trigger. to be called when the user readies up in character select and 1st place winner.
+	- might make it a boolean to loop?
+
+-"Punch_Charge" - Set up as a Boolean. Turn to True when the character is charging. Switch to False when they stop/ not charging
+-"Punch_GroundSlam" - Set up as a Trigger. Call this if Charge is succussfully completed.
+
+-"Throw" - Set up as a trigger. To be called when player throws and item
+
+

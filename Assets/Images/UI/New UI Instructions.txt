@@ -1,0 +1,52 @@
+*Let me know if it's not really possible to be activating and deactivating game objects during play, it should be easier than having to activate triggers
+on multiple different animators but if it cant really be done then I can set up the animators to have to be triggered instead(mainly an issue with the tags
+since they're made up of like 10 objects and animators). Hopefully it works if you set the objects in the inspector on the script though.
+
+Countdown
+	Plays at the start of the round, in the three seconds before players gain control.
+	Just needs the Countdown object to be turned on and it will play the countdown animation, no setting triggers or anything required.
+	Once the animation is finished the Countdown object can be turned off.
+
+New Normal Sale
+	All under the SalePersistent object. Gets turned on after the countdown finishes.
+	The sale tags and the sale base will need to play their animations every time the sale changes.
+	The sale tags inside the Tags object will play their animations when the Tags object is turned on, so they can be turned on, they'll go down, then up, and then
+	they can be turned off when their animation is done.
+	The SaleBase will need to have the animation triggered whenever the sale changes, using the GoDown trigger. It will move down, then up, with the
+	tags, and then go to idle and stay on, ready to be triggered when needed.
+	Inside the SaleBase object the image on the ItemPersistent object needs to be changed to whatever the current sale item is. The images for each item
+	are located in Images\UI\SaleTags\SaleItems. The animation the object plays is always playing.
+	The sales also have a timer on them, which needs to be displayed on the SaleTimerText object inside SaleBase, same as the actual timer.
+	Sean mentioned that the sale changes to a new sale instantly regardless of the time left if all the corresponding items are purchased, so for when that happens
+	there's a SoldOut object inside the SaleBase that needs to be turned on, it will play it's animation and then when the sale changes over it can be
+	turned off again.
+	Once the sale timer gets short (less than 5 seconds or so) the trigger "Activate" in the animator on the SaleTimerText needs to be activated and
+	it will make the text pulse and turn red every second. When the sale changes again, the trigger "Deactivate" needs to be triggered to change it
+	back to idle.
+
+New Rare Sale
+	Under the RareSalePersistent and RarePopup objects.
+	The normal SalePersistent object needs to be turned off when a rare sale happens.
+	Before the RareSalePersistent object gets turned on, the RarePopup object needs to be turned on.
+	The image on the ItemImage object inside RarePopup needs to be changed to whatever the rare item is, the images are located in the same folder as the normal item images.
+	No triggering needed here, the in/out animations play when the RarePopup object is turned on.
+	After the RarePopup animations are done, the object needs to be turned off and the RareSalePersistent object needs to be turned on.
+	From here on it's pretty much the same as the normal sale UI, the Tags will play themselves since the RareSalePersistent will be turned on once, 
+	which will cause them to play. The SaleBase inside of the object is the same as the normal one and will play the animation when triggered. The
+	ItemPersistent objects image needs to be changed to whatever the rare item is.
+	Since the rare sales have no time limit there's no timer to worry about.
+	When the sale ends, do the same as when a normal sale ends prematurely and turn on the SoldOut object, then turn off RareSalePersistent and 
+	turn on SalePersistent again to resume the normal sales.
+
+Timer Low Time
+	Starts when the timer is almost out (around 10 seconds left). All under TimerObject
+	The 'Activate' trigger needs to be triggered on the ClockTimer object, this will make the timer shake.
+	The 'Activate' trigger needs to be triggered on the TimerText object, this will make the text pulse and turn red every second.
+	On the TimerPulse object inside ClockTimer the 'Activate' trigger needs to be triggered, this will make the timer pulse along with the text.
+
+New Leader(Changed)
+	Under the ScoreIndicators object.
+	Since the top left of the screen is being taken up by the sale UI now, we're gonna change the new leader popup. What I've put in is small
+	and (probably)temporary. So the old LeaderObject isn't really needed now.
+	When the leader changes, the NewLeader object's animator needs to be triggered with 'Activate'. It will move out, wait, then in when activated.
+	The colour of the NewLeader object needs to be changed to whoever the new leader is.
